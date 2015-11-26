@@ -13,7 +13,7 @@ public class Utils {
 				BufferedReader br = new BufferedReader(new FileReader(path));
 				String line;
 				while((line = br.readLine())!= null)
-						builder.append(line + "\n");
+						builder.append(line + " ");
 				
 				br.close();
 			}catch(IOException e){

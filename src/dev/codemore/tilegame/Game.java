@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import dev.codemore.tilegame.display.Display;
 import dev.codemore.tilegame.gfx.Assets;
+import dev.codemore.tilegame.gfx.GameCamera;
 import dev.codemore.tilegame.gfx.ImageLoader;
 import dev.codemore.tilegame.gfx.SpriteSheet;
 import dev.codemore.tilegame.input.KeyManager;
@@ -18,7 +19,7 @@ import dev.codemore.tilegame.states.State;
 public class Game implements Runnable{
 	
 	private Display display;
-	public int width, height;
+	private int width, height;
 	public String title;
 	
 	private boolean running = false;
@@ -37,6 +38,14 @@ public class Game implements Runnable{
 	
 	private KeyManager keyManager;
 	
+	// Camera
+	
+	public GameCamera gameCamera;
+	
+	//Handler
+	
+	private Handler handler;
+	
 	public Game(String title, int width, int height){
 		
 		this.width=width;
@@ -50,8 +59,11 @@ public class Game implements Runnable{
 		display.getFrame().addKeyListener(keyManager);
 		Assets.init();
 		
-		gameState = new GameState(this);
-		menuState = new MenuState(this);
+		gameCamera = new GameCamera(this,0,0);
+		handler = new Handler(this);
+		
+		gameState = new GameState(handler);
+		menuState = new MenuState(handler);
 		State.setState(gameState);
 	}
 	private void tick(){
@@ -118,6 +130,17 @@ public class Game implements Runnable{
 	public KeyManager getKeyManager(){
 			return keyManager;
 	}
+	public GameCamera getGameCamere(){
+		return gameCamera;
+	}
+	
+	public int getWidth(){
+		return width;
+	}
+	
+	public int getHeight(){
+		return height;
+	}
 	// funkcije koje pokreće našu dretvu
 	public synchronized void start(){
 		if(running)
@@ -139,4 +162,6 @@ public class Game implements Runnable{
  				e.printStackTrace();
 			}
 	}
+
+ 
 }

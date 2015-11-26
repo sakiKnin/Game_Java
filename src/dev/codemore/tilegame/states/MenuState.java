@@ -3,11 +3,12 @@ package dev.codemore.tilegame.states;
 import java.awt.Graphics;
 
 import dev.codemore.tilegame.Game;
+import dev.codemore.tilegame.Handler;
 
 public class MenuState extends State {
 
-	public MenuState(Game game){
-		super(game);
+	public MenuState(Handler handler){
+		super(handler);
 		}
 	@Override
 	public void tick() {

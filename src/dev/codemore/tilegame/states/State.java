@@ -3,6 +3,7 @@ package dev.codemore.tilegame.states;
 import java.awt.Graphics;
 
 import dev.codemore.tilegame.Game;
+import dev.codemore.tilegame.Handler;
 
 public abstract class State {
 	
@@ -20,10 +21,10 @@ public abstract class State {
 	}
 	
 	//CLASS
-	protected Game game;
+	protected Handler handler;
 	
-	public State(Game game){
-		this.game=game;
+	public State(Handler handler){
+		this.handler = handler;
 	}
 	
 	public abstract void tick();
