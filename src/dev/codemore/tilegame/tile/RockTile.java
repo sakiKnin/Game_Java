@@ -5,7 +5,7 @@ import dev.codemore.tilegame.gfx.Assets;
 public class RockTile extends Tile{
 	
 	public RockTile(int id){
-		super(Assets.tree, id);
+		super(Assets.stone, id);
 		}
 	
 	//Override
